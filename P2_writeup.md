@@ -56,46 +56,18 @@ My final model results are:
 * test set accuracy of 96.8%
 
 Throughout the training procedure, I made the following iterations primarily on hyperparmter tuning:
-* In my First attempt, I used a training rate of 0.001 and  
+* In my first attempt, I used a training rate of 0.001 and obtained a test accuracy of 94.8%. However, validation error converges really fast but is more than an order of magnitude larger than that of the training error and it starts to increase after roughly 80 epochs. This indicates that the training rate might be too high and that the model is overfitting the data.
+
+* Therefore, in my second iteration, I decreased the training rate to 0.0005 and test accuracy is increased to 95.4%.
+
+* Lastly, I added a dropout rate of 0.5 in the first fully connected layer to solve the problem of overfitting. And the accuracy and loss vs epoch plot are shown as below:
+<img src="./Training_accuracy_and_loss.png"/>
 
 ---
 ## Test the model performance to make predictions on new images
 
+I used in total 38 new images prepared by navoshta from https://github.com/navoshta/traffic-signs/tree/master/traffic-signs-data/custom. The accuracy on the new images is 88.6% which means out of 38 images, the model accuractely predicts roughly images. As shown by the results of the top 5 softmax probabilities, except the ones that are not in the traing data, the model is able to predict the right sign with probablity equals to 1 for most of the cases. However, thare are also cases where for instance, for case 28, End of all speed and passing limits, the model predicts it to be Speed limit 30km/h with probablity equal to 1. This is primarily because the sign is different from the training images.
 
-
-The first image might be difficult to classify because ...
-
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
-
-Here are the results of the prediction:
-
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
-
-
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
-
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
-
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
-
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
-
-
-For the second image ... 
 
 ## Potential improvements 
 
